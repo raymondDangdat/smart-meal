@@ -20,10 +20,10 @@ class MainDrawer extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.all(20.0),
             alignment: Alignment.centerLeft,
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).primaryColor,
             child: Text("Smart Meal!!", style: TextStyle(fontWeight: FontWeight.w900,
             fontSize: 30.0,
-            color: Theme.of(context).primaryColor),),
+            color: Colors.white),),
           ),
 
           SizedBox(
@@ -31,10 +31,10 @@ class MainDrawer extends StatelessWidget {
           ),
 
           buildListTile("Restaurant", Icons.restaurant, (){
-            Navigator.of(context).pushNamed('/');
+            Navigator.of(context).pushReplacementNamed('/');
           }),
           buildListTile("Filters",Icons.filter, (){
-            Navigator.of(context).pushNamed(FilterScreen.routeName);
+            Navigator.of(context).pushReplacementNamed(FilterScreen.routeName);
           })
 
 
