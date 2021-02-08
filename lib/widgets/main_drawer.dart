@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../screens/filters_screen.dart';
 
 class MainDrawer extends StatelessWidget {
-  Widget buildListTile(String title, IconData icon){
+  Widget buildListTile(String title, IconData icon, Function tapHandler){
     return ListTile(
       leading: Icon(icon, size: 26.0,),
       title: Text(title, style: TextStyle(fontFamily: 'RobotoCondensed', fontSize: 24, fontWeight: FontWeight.bold),),
-      onTap: (){},
+      onTap: tapHandler,
     );
   }
   @override
@@ -29,8 +30,12 @@ class MainDrawer extends StatelessWidget {
             height: 20.0,
           ),
 
-          buildListTile("Restaurant", Icons.restaurant),
-          buildListTile("Filters",Icons.filter)
+          buildListTile("Restaurant", Icons.restaurant, (){
+            Navigator.of(context).pushNamed('/');
+          }),
+          buildListTile("Filters",Icons.filter, (){
+            Navigator.of(context).pushNamed(FilterScreen.routeName);
+          })
 
 
         ],
