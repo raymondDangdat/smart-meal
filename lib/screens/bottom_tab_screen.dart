@@ -1,21 +1,35 @@
 import 'package:flutter/material.dart';
+import '../models/meal.dart';
 import '../widgets/main_drawer.dart';
 import './favourites.dart';
 import './categories_screen.dart';
 
 class BottomTabScreen extends StatefulWidget {
+  final List<Meal> _favouriteMeals;
+  BottomTabScreen(this._favouriteMeals);
   @override
   _BottomTabScreenState createState() => _BottomTabScreenState();
 }
 
 class _BottomTabScreenState extends State<BottomTabScreen> {
-  final List<Map<String, Object>> _pages = [
-    //You can add actions to thr map to be included in the pages
-    {'page': CategoriesScreen(), 'title': "Categories"},
-    {'page': Favourites(), 'title': 'Favourites'}
-  ];
+  List<Map<String, Object>> _pages;
 
   int _selectedPageIndex = 0;
+
+  @override
+  void initState() {
+    _pages = [
+      {
+        'page': CategoriesScreen(),
+        'title': "Categories"
+      },
+      {
+        'page': Favourites(widget._favouriteMeals),
+        'title': 'Favourites'
+      }
+    ];
+    super.initState();
+  }
 
   void _selectPage(int index) {
     setState(() {
